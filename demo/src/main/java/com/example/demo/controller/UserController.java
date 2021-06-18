@@ -20,37 +20,48 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
+	
+	@GetMapping("test-get")
+	public String get() {
+		return "@GetMapping";
+	}
+	
+	@GetMapping("test-get/{id}")
+	public String get(long id) {
+		return "@GetMapping" + id;
+	}
 
-    @Autowired
-    private UserService userService;
-    
-    @GetMapping()
-    public ResponseEntity<List<UserVm>> getUserAll() {
-        List<UserVm> result = userService.getUserAll();
-        return new ResponseEntity<List<UserVm>>(result, HttpStatus.OK);
-    }
-    @GetMapping("{id}")
-    public ResponseEntity<UserVm> getUser(@PathVariable("id") String id) {
-        UserVm result = userService.getUser(id);
-        return new ResponseEntity<UserVm>(result, HttpStatus.OK);
-    }
-
-    @PostMapping()
-    public ResponseEntity<String> createUser(@RequestBody SaveUserVM user) {
-        userService.createUser(user);
-        return new ResponseEntity<String>(HttpStatus.CREATED);
-    }
-
-    @PutMapping()
-    public ResponseEntity<String> updateUser(@RequestBody UserVm user) {
-        userService.updateUser(user);
-        return new ResponseEntity<String>(HttpStatus.CREATED);
-    }
-
-    @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable("id") String id) {
-        userService.deleteUser(id);
-        return new ResponseEntity<String>(HttpStatus.OK);
-    }
+//    @Autowired
+//    private UserService userService;
+//    
+//    @GetMapping()
+//    public ResponseEntity<List<UserVm>> getUserAll() {
+//        List<UserVm> result = userService.getUserAll();
+//        return new ResponseEntity<List<UserVm>>(result, HttpStatus.OK);
+//    }
+//    
+//    @GetMapping("{id}")
+//    public ResponseEntity<UserVm> getUser(@PathVariable("id") String id) {
+//        UserVm result = userService.getUser(id);
+//        return new ResponseEntity<UserVm>(result, HttpStatus.OK);
+//    }
+//
+//    @PostMapping()
+//    public ResponseEntity<String> createUser(@RequestBody SaveUserVM user) {
+//        userService.createUser(user);
+//        return new ResponseEntity<String>(HttpStatus.CREATED);
+//    }
+//
+//    @PutMapping()
+//    public ResponseEntity<String> updateUser(@RequestBody UserVm user) {
+//        userService.updateUser(user);
+//        return new ResponseEntity<String>(HttpStatus.CREATED);
+//    }
+//
+//    @DeleteMapping("{id}")
+//    public ResponseEntity<String> deleteUser(@PathVariable("id") String id) {
+//        userService.deleteUser(id);
+//        return new ResponseEntity<String>(HttpStatus.OK);
+//    }
 
 }
