@@ -50,7 +50,6 @@ public class UserServiceImpl implements UserService {
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found user"));
 		userDb.setName(user.getName());
 		userDb.setUsername(user.getUsername());
-		userDb.setPassword(user.getPassword());
 		userDb.setEmail(user.getEmail());
 		userRepository.save(userDb);
 		return true;

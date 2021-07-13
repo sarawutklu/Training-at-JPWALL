@@ -7,8 +7,10 @@ import lombok.Setter;
 @Setter
 public class SaveUserVM {
 
+    private String id;
+    
     private String name;
-
+    
     private String password;
   
     private String username;
